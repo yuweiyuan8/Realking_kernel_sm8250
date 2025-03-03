@@ -12,24 +12,8 @@ export KBUILD_COMPILER_STRING="$($MAIN/clang/bin/clang --version | head -n 1 | p
 if ! [ -d "$MAIN/clang" ]; then
     echo "No clang compiler found ... Cloning from GitHub"
 
-    # Prompt user to choose Clang version
-    echo "Choose which Clang to use:"
-    echo "1. ZyC Stable"
-    echo "2. WeebX Stable"
-    read -p "Enter the number of your choice: " clang_choice
-
-    # Download and extract the selected Clang version
-    if [ "$clang_choice" = "1" ]; then
-        wget "$(curl -s https://raw.githubusercontent.com/v3kt0r-87/Clang-Stable/main/clang-zyc.txt)" -O "zyc-clang.tar.gz"
+    wget "$(curl -s https://raw.githubusercontent.com/v3kt0r-87/Clang-Stable/main/clang-zyc.txt)" -O "zyc-clang.tar.gz"
         rm -rf clang && mkdir clang && tar -xvf zyc-clang.tar.gz -C clang && rm -rf zyc-clang.tar.gz
-    elif [ "$clang_choice" = "2" ]; then
-        wget "$(curl -s https://raw.githubusercontent.com/v3kt0r-87/Clang-Stable/main/clang-weebx.txt)" -O "weebx-clang.tar.gz"
-        rm -rf clang && mkdir clang && tar -xvf weebx-clang.tar.gz -C clang && rm -rf weebx-clang.tar.gz
-    else
-        echo "Invalid choice. Exiting..."
-    exit 1
-  fi
-fi
 
 KERNEL_DIR=$(pwd)
 ZIMAGE_DIR="$KERNEL_DIR/out/arch/arm64/boot"
