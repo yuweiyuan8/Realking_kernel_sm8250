@@ -1,0 +1,22 @@
+name: Realking_kernel_sm8250 Kernel Lmi
+run-name: Realking_kernel_sm8250 Kernel Lmi
+
+on:
+  push:
+    branches: [ rebase ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: nexgang/ubuntu:latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Nexus Kernel Lmi
+        run: bash build_kernel lmi
+        env:
+           token: ${{ secrets.TOKEN }}
+           chat_id: ${{ secrets.CHAT_ID }}
