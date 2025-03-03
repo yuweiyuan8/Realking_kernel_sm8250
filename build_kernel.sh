@@ -63,18 +63,18 @@ echo "          BUILDING KERNEL          "
 echo -e "***********************************************$nocol"
 
 # Prompt for device choice
-read -p "Choose device (apollo/alioth): " device
-if [ "$device" = "apollo" ]; then
-  KERNEL_DEFCONFIG=apollo_defconfig
-  DEVICE_NAME1="apollo"
+read -p "Choose device (apollo/lmi): " device
+if [ "$device" = "lmi" ]; then
+  KERNEL_DEFCONFIG=lmi_defconfig
+  DEVICE_NAME1="lmi"
   DEVICE_NAME2="apollon"
   IS_SLOT_DEVICE=0
   
   # Remove vendor_boot block for apollo
   VENDOR_BOOT_LINES_REMOVED=1
 else
-  KERNEL_DEFCONFIG=alioth_defconfig
-  DEVICE_NAME1="alioth"
+  KERNEL_DEFCONFIG=lmi_defconfig
+  DEVICE_NAME1="lmi"
   DEVICE_NAME2="aliothin"
   IS_SLOT_DEVICE=1
   VENDOR_BOOT_LINES_REMOVED=0
